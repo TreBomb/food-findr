@@ -2,7 +2,7 @@ import React from "react";
 import { StatusBar, StyleSheet, SafeAreaView, View } from "react-native";
 import { Searchbar } from "react-native-paper";
 
-import { RestaurantInfo } from "../components/restaurant-info.component";
+import { RestaurantInfo } from "../components/restaurant-info-card.component";
 
 export const RestaurantsScreen = () => {
   return (
