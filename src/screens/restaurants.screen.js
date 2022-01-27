@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { StatusBar, SafeAreaView, View } from "react-native";
 import { Searchbar } from "react-native-paper";
 
-import { RestaurantInfo } from "../components/restaurant-info-card.component";
+import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
@@ -27,7 +27,7 @@ export const RestaurantsScreen = () => {
         <Searchbar placeholder="Search" />
       </SearchContainer>
       <RestaurantListContainer>
-        <RestaurantInfo />
+        <RestaurantInfoCard />
       </RestaurantListContainer>
     </SafeArea>
   );
