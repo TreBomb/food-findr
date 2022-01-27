@@ -15,7 +15,7 @@ import {
   Rating,
   Icon,
   Address,
-} from "./restaurant-info-card.styles";
+} from "../styles/restaurant-info-card.styles";
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
