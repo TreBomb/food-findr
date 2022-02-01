@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { FlatList, View } from "react-native";
-import { Searchbar } from "react-native-paper";
 import { ActivityIndicator, Colors } from "react-native-paper";
 
 import { SafeArea } from "../components/safe-area.component";
@@ -37,7 +36,6 @@ export const RestaurantsScreen = () => {
           <Loading size={50} animating={true} color={Colors.blue300} />
         </LoadingContainer>
       )}
-
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {

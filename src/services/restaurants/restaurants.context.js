@@ -1,4 +1,10 @@
-import React, { useState, createContext, useEffect, useMemeo } from "react";
+import React, {
+  useState,
+  createContext,
+  useEffect,
+  useMemeo,
+  useContext,
+} from "react";
 
 import {
   restaurantsRequest,
@@ -31,16 +37,21 @@ export const RestaurantsContextProvider = ({ children }) => {
         });
     }, 2000);
   };
-
   useEffect(() => {
     if (location) {
-      const locationString = `${location.lat},${location.lon}`;
+      const locationString = `${location.lat},${location.lng}`;
       retrieveRestaurants(locationString);
     }
   }, [location]);
 
   return (
-    <RestaurantsContext.Provider value={{ restaurants, isLoading, error }}>
+    <RestaurantsContext.Provider
+      value={{
+        restaurants,
+        isLoading,
+        error,
+      }}
+    >
       {children}
     </RestaurantsContext.Provider>
   );
