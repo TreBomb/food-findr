@@ -20,13 +20,13 @@ const RestaurantList = styled(FlatList).attrs({
 })``;
 
 const Loading = styled(ActivityIndicator)`
-  margin-left: -25px;
+  margin-top: ${(props) => props.theme.space[5]};
 `;
 
 const LoadingContainer = styled(View)`
-  position: absolute;
-  top: 50%;
-  left 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const RestaurantsScreen = () => {
@@ -34,14 +34,15 @@ export const RestaurantsScreen = () => {
 
   return (
     <SafeArea>
+      <SearchContainer>
+        <Searchbar placeholder="Search" />
+      </SearchContainer>
       {isLoading && (
         <LoadingContainer>
           <Loading size={50} animating={true} color={Colors.blue300} />
         </LoadingContainer>
       )}
-      <SearchContainer>
-        <Searchbar placeholder="Search" />
-      </SearchContainer>
+
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
