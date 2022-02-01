@@ -1,11 +1,40 @@
-import { mocks } from "./mock";
+import React, { useState, createContext, useEffect, useMemeo } from "react";
 
-export const RestaurantsRequest = (location = "37.7749295,-122.4194155") => {
-  return new Promise((resolve, reject) => {
-    const mock = mocks[location];
-    if (!mock) {
-      reject(new Error("No mock data for this location"));
-    }
-    resolve(mock);
-  });
+import {
+  restaurantsRequest,
+  restaurantsTransform,
+} from "./restaurants.service";
+
+export const RestaurantsContext = createContext();
+
+export const RestaurantsContextProvider = ({ children }) => {
+  const [restaurants, setRestaurants] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const retrieveRestaurants = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      restaurantsRequest()
+        .then(restaurantsTransform)
+        .then((results) => {
+          setIsLoading(false);
+          setRestaurants(results);
+        })
+        .catch((err) => {
+          setIsLoading(false);
+          setError(err);
+        });
+    }, 2000);
+  };
+
+  useEffect(() => {
+    retrieveRestaurants();
+  }, []);
+
+  return (
+    <RestaurantsContext.Provider value={{ restaurants, isLoading, error }}>
+      {children}
+    </RestaurantsContext.Provider>
+  );
 };
