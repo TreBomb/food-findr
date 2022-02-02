@@ -33,7 +33,7 @@ export const RestaurantsScreen = () => {
       <Search />
       {isLoading && (
         <LoadingContainer>
-          <Loading size={50} animating={true} color={Colors.blue300} />
+          <Loading size={50} animating={true} color={"tomato"} />
         </LoadingContainer>
       )}
       <RestaurantList
