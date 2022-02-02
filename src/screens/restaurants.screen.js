@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { FlatList, View } from "react-native";
-import { ActivityIndicator, Colors } from "react-native-paper";
+import { ActivityIndicator } from "react-native-paper";
 
 import { SafeArea } from "../components/safe-area.component";
 import { Spacer } from "../components/spacer.component";
