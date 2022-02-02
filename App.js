@@ -45,6 +45,14 @@ const createScreenOptions = ({ route }) => {
       <Ionicons name={iconName} size={size} color={color} />
     ),
     headerShown: false,
+    tabBarActiveTintColor: "tomato",
+    tabBarInactiveTintColor: "gray",
+    tabBarStyle: [
+      {
+        display: "flex",
+      },
+      null,
+    ],
   };
 };
 
@@ -64,13 +72,7 @@ export default function App() {
         <LocationContextProvider>
           <RestaurantsContextProvider>
             <NavigationContainer>
-              <Tab.Navigator
-                screenOptions={createScreenOptions}
-                tabBarOptions={{
-                  activeTintColor: "tomato",
-                  inactiveTintColor: "gray",
-                }}
-              >
+              <Tab.Navigator screenOptions={createScreenOptions}>
                 <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
                 <Tab.Screen name="Map" component={Map} />
                 <Tab.Screen name="Settings" component={Settings} />
