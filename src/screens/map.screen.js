@@ -2,19 +2,38 @@ import React, { useEffect, useState } from "react";
 import MapView from "react-native-maps";
 import { useContext } from "react/cjs/react.development";
 import styled from "styled-components";
+import { ActivityIndicator } from "react-native-paper";
 
 import { LocationContext } from "../services/location/location.context";
 import { RestaurantsContext } from "../services/restaurants/restaurants.context";
 
 import { Search } from "../components/map-search.component";
+import { MapCallout } from "../components/map-callout.component";
 
 const Map = styled(MapView)`
   flex: 1;
 `;
 
-export const MapScreen = () => {
+const Loading = styled(ActivityIndicator)`
+  margin-top: ${(props) => props.theme.space[5]};
+  justify-content: center;
+  align-self: center;
+  flex: 1;
+`;
+
+const LoadingContainer = styled.View`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 998;
+`;
+
+export const MapScreen = ({ navigation }) => {
   const { location } = useContext(LocationContext);
-  const { restaurants = [] } = useContext(RestaurantsContext);
+  const { isLoading, restaurants = [] } = useContext(RestaurantsContext);
 
   const [latDelta, setLatDelta] = useState(0);
   const { lat, lng, viewport } = location;
@@ -29,6 +48,11 @@ export const MapScreen = () => {
   return (
     <>
       <Search />
+      {isLoading && (
+        <LoadingContainer>
+          <Loading size={50} animating={true} color={"tomato"} />
+        </LoadingContainer>
+      )}
       <Map
         region={{
           latitude: lat,
@@ -46,7 +70,17 @@ export const MapScreen = () => {
                 latitude: restaurant.geometry.location.lat,
                 longitude: restaurant.geometry.location.lng,
               }}
-            />
+            >
+              <MapView.Callout
+                onPress={() =>
+                  navigation.navigate("Restaurant Detail", {
+                    restaurant: restaurant,
+                  })
+                }
+              >
+                <MapCallout restaurant={restaurant} />
+              </MapView.Callout>
+            </MapView.Marker>
           );
         })}
       </Map>
