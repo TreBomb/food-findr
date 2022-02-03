@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { FlatList, View, TouchableOpacity } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
@@ -7,7 +7,9 @@ import { SafeArea } from "../components/safe-area.component";
 import { Spacer } from "../components/spacer.component";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { RestaurantsContext } from "../services/restaurants/restaurants.context";
+import { FavoritesContext } from "../services/favorites/favorites.context";
 import { Search } from "../components/restaurant-search.component";
+import { FavoritesBar } from "../components/favorites-bar.component";
 
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -27,10 +29,18 @@ const LoadingContainer = styled(View)`
 
 export const RestaurantsScreen = ({ navigation }) => {
   const { isLoading, restaurants } = useContext(RestaurantsContext);
+  const { favorites } = useContext(FavoritesContext);
+  const [isToggled, setIsToggled] = useState(false);
 
   return (
     <SafeArea>
-      <Search />
+      <Search
+        isFavoritesToggled={isToggled}
+        onFavoritesToggle={() => setIsToggled(!isToggled)}
+      />
+      {isToggled && (
+        <FavoritesBar favorites={favorites} onNavigate={navigation.navigate} />
+      )}
       {isLoading && (
         <LoadingContainer>
           <Loading size={50} animating={true} color={"tomato"} />

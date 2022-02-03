@@ -17,7 +17,7 @@ export const RestaurantDetailScreen = ({ route }) => {
   return (
     <SafeArea>
       <RestaurantInfoCard restaurant={restaurant} />
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <List.Accordion
           theme={{ colors: { primary: "tomato" } }}
           title="Breakfast"
