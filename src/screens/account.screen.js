@@ -5,6 +5,7 @@ import {
   AccountContainer,
   AccountCover,
   AuthButton,
+  Title,
 } from "../styles/account.styles";
 import { Spacer } from "../components/spacer.component";
 
@@ -12,6 +13,7 @@ export const AccountScreen = ({ navigation }) => {
   return (
     <AccountBackground>
       <AccountCover />
+      <Title>Food Findr</Title>
       <AccountContainer>
         <AuthButton
           icon="lock-open"
