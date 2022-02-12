@@ -20,13 +20,13 @@ export const AuthenticationContextProvider = ({ children }) => {
       })
       .catch((e) => {
         setIsLoading(false);
-        setError(e.toString());
+        setError(e.toString().replace("FirebaseError: Firebase:", ""));
       });
   };
 
   const onRegister = (email, password, repeatedPassword) => {
     if (password !== repeatedPassword) {
-      setError("Error: Passwords do not match");
+      setError("Passwords do not match");
       return;
     }
 
@@ -37,7 +37,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       })
       .catch((e) => {
         setIsLoading(false);
-        setError(e.toString());
+        setError(e.toString().replace("FirebaseError: Firebase:", ""));
       });
   };
 
