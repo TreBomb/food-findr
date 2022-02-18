@@ -10,12 +10,7 @@ import { RestaurantsContext } from "../services/restaurants/restaurants.context"
 import { FavoritesContext } from "../services/favorites/favorites.context";
 import { Search } from "../components/restaurant-search.component";
 import { FavoritesBar } from "../components/favorites-bar.component";
-
-const RestaurantList = styled(FlatList).attrs({
-  contentContainerStyle: {
-    padding: 16,
-  },
-})``;
+import { RestaurantList } from "../styles/restaurant-list.styles";
 
 const Loading = styled(ActivityIndicator)`
   margin-top: ${(props) => props.theme.space[5]};
