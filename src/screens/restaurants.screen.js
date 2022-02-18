@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
-import { FlatList, View, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
 
 import { SafeArea } from "../components/safe-area.component";

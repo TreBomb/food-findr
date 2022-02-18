@@ -26,9 +26,7 @@ export const FavoritesScreen = ({ navigation }) => {
           return (
             <TouchableOpacity
               onPress={() =>
-                navigation.navigate("RestaurantDetail", {
-                  restaurant: item,
-                })
+                navigation.navigate("Restaurant Detail", { restaurant: item })
               }
             >
               <Spacer position="bottom" size="large">
