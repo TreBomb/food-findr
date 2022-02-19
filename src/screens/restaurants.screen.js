@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { View, TouchableOpacity } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
 
+import { FadeInView } from "../animations/fade.animation";
 import { SafeArea } from "../components/safe-area.component";
 import { Spacer } from "../components/spacer.component";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
@@ -51,7 +52,9 @@ export const RestaurantsScreen = ({ navigation }) => {
               }
             >
               <Spacer position="bottom" size="large">
-                <RestaurantInfoCard restaurant={item} />
+                <FadeInView>
+                  <RestaurantInfoCard restaurant={item} />
+                </FadeInView>
               </Spacer>
             </TouchableOpacity>
           );
