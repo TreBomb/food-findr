@@ -1,14 +1,10 @@
 import camelize from "camelize";
 
-import { locations } from "./location.mock";
-
 export const locationRequest = (searchTerm) => {
-  return new Promise((resolve, reject) => {
-    const locationMock = locations[searchTerm];
-    if (!locationMock) {
-      reject("not found");
-    }
-    resolve(locationMock);
+  return fetch(
+    `http://localhost:5001/foodfindr-ac4b8/us-central1/geocode?city=${searchTerm}`
+  ).then((res) => {
+    return res.json();
   });
 };
 
@@ -19,3 +15,19 @@ export const locationTransform = (result) => {
 
   return { lat, lng, viewport: geometry.viewport };
 };
+
+// "emulators": {
+//   "ui": {
+//     "enabled": true,
+//     "port": 4001
+//   },
+//   "functions": {
+//     "source": "functions",
+//     "name": "functions",
+//     "host": "localhost",
+//     "port": 4002
+//   },
+//   "storage": {
+//     "port": 4003
+//   }
+// }
