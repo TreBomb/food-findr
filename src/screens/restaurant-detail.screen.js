@@ -9,7 +9,7 @@ import { SafeArea } from "../components/safe-area.component";
 import { OrderButton } from "../styles/restaurant-list.styles";
 import { Spacer } from "../components/spacer.component";
 
-export const RestaurantDetailScreen = ({ route }) => {
+export const RestaurantDetailScreen = ({ route, navigation }) => {
   const [breakfastExpanded, setBreakfastExpanded] = useState(false);
   const [lunchExpanded, setLunchExpanded] = useState(false);
   const [dinnerExpanded, setDinnerExpanded] = useState(false);
@@ -77,6 +77,7 @@ export const RestaurantDetailScreen = ({ route }) => {
           icon="cash-usd"
           onPress={() => {
             addToCart({ item: "Special", price: 1299 }, restaurant);
+            navigation.navigate("Checkout");
           }}
         >
           Order Special Only $12.99

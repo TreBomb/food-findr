@@ -10,13 +10,15 @@ export const CartContextProvider = ({ children }) => {
 
   const [cart, setCart] = useState([]);
   const [restaurant, setRestaurant] = useState(null);
+  const [sum, setSum] = useState(0);
 
   const add = (item, rst) => {
     if (!restaurant || restaurant.placeId !== rst.placeId) {
       setRestaurant(rst);
       setCart([item]);
+    } else {
+      setCart([...cart, item]);
     }
-    setCart([...cart, item]);
   };
 
   const clear = () => {
@@ -31,6 +33,7 @@ export const CartContextProvider = ({ children }) => {
         clearCart: clear,
         restaurant,
         cart,
+        sum,
       }}
     >
       {children}
