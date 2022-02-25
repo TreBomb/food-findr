@@ -15,7 +15,11 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.trebomb.foodfindr",
+      "config": {
+        "googleMapsApiKey": "YOUR IOS API KEY HERE"
+      }
     },
     "android": {
       "adaptiveIcon": {
