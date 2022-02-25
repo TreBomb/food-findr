@@ -1,1 +1,15 @@
-Web / API server started at localhost:4000
+Web / API server started at 127.0.0.1:4000
+/home/tre/.nvm/versions/node/v16.1.0/bin/node[4203]: ../src/node.cc:765:void node::ResetStdio(): Assertion `!(err != 0) || (err == -1 && (*__errno_location ()) == 1)' failed.
+ 1: 0xb12b40 node::Abort() [/home/tre/.nvm/versions/node/v16.1.0/bin/node]
+ 2: 0xb12bbe  [/home/tre/.nvm/versions/node/v16.1.0/bin/node]
+ 3: 0xad7474 node::ResetStdio() [/home/tre/.nvm/versions/node/v16.1.0/bin/node]
+ 4: 0xad7530 node::SignalExit(int, siginfo_t*, void*) [/home/tre/.nvm/versions/node/v16.1.0/bin/node]
+ 5: 0x7fcc9c2e33c0  [/lib/x86_64-linux-gnu/libpthread.so.0]
+ 6: 0x7fcc9c1fe5ce epoll_wait [/lib/x86_64-linux-gnu/libc.so.6]
+ 7: 0x159c004  [/home/tre/.nvm/versions/node/v16.1.0/bin/node]
+ 8: 0x15897f8 uv_run [/home/tre/.nvm/versions/node/v16.1.0/bin/node]
+ 9: 0xa55fd5 node::SpinEventLoop(node::Environment*) [/home/tre/.nvm/versions/node/v16.1.0/bin/node]
+10: 0xb547c7 node::NodeMainInstance::Run(node::EnvSerializeInfo const*) [/home/tre/.nvm/versions/node/v16.1.0/bin/node]
+11: 0xadae62 node::Start(int, char**) [/home/tre/.nvm/versions/node/v16.1.0/bin/node]
+12: 0x7fcc9c1030b3 __libc_start_main [/lib/x86_64-linux-gnu/libc.so.6]
+13: 0xa52f5c  [/home/tre/.nvm/versions/node/v16.1.0/bin/node]
