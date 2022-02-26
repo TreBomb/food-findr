@@ -19,7 +19,7 @@ import {
   PaymentProcessing,
 } from "../styles/checkout.styles";
 
-export const CheckoutScreen = () => {
+export const CheckoutScreen = ({ navigation }) => {
   const { cart, clearCart, restaurant, sum } = useContext(CartContext);
   const [name, setName] = useState("");
   const [card, setCard] = useState(null);
@@ -28,15 +28,22 @@ export const CheckoutScreen = () => {
   const onPay = () => {
     setIsLoading(true);
     if (!card || !card.id) {
-      console.log("error");
       setIsLoading(false);
+      navigation.navigate("Checkout Error", {
+        error: "Please enter a valid card",
+      });
     } else {
       PayRequest(card.id, sum, name)
         .then((result) => {
           setIsLoading(false);
+          clearCart();
+          navigation.navigate("Checkout Success");
         })
         .catch((error) => {
           setIsLoading(false);
+          navigation.navigate("Checkout Error", {
+            error: error,
+          });
         });
     }
   };
@@ -77,7 +84,15 @@ export const CheckoutScreen = () => {
             setName(txt);
           }}
         />
-        {name.length > 0 && <CreditCardInput name={name} onSuccess={setCard} />}
+        {name.length > 0 && (
+          <CreditCardInput
+            name={name}
+            onSuccess={setCard}
+            onError={navigation.navigate(() => "Checkout Error", {
+              error: "Something went wrong processing your card",
+            })}
+          />
+        )}
         <Spacer position="top" size="xxl" />
         <PayButton
           disabled={isLoading}

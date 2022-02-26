@@ -16,7 +16,7 @@ export const CartIconContainer = styled.View`
 export const CartIcon = styled(Avatar.Icon).attrs({
   size: 128,
 })`
-  background-color: tomato;
+  background-color: ${(props) => props.bg || "tomato"};
 `;
 
 export const NameInput = styled(TextInput)`
