@@ -6,7 +6,8 @@ import { colors } from "../infrastructure/theme/colors";
 import { CartIconContainer, CartIcon } from "../styles/checkout.styles";
 
 export const CheckoutErrorScreen = ({ route }) => {
-  const { error = "" } = route.params.error;
+  const { error } = route.params;
+
   return (
     <SafeArea>
       <CartIconContainer>
