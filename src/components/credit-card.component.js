@@ -33,7 +33,6 @@ import { cardTokenRequest } from "../services/checkout/checkout.service";
 
 export const CreditCardInput = ({ name, onSuccess, onError }) => {
   const onChange = async (formData) => {
-    console.log("formData", formData);
     const { complete, expiryMonth, expiryYear } = formData;
     // const isIncomplete = Object.values(status).includes("incomplete");
     const card = {
@@ -43,10 +42,8 @@ export const CreditCardInput = ({ name, onSuccess, onError }) => {
       cvc: "242",
       name: name,
     };
-    console.log("card", card);
 
     if (complete) {
-      console.log("complete");
       try {
         const info = await cardTokenRequest(card);
         onSuccess(info);
@@ -72,11 +69,7 @@ export const CreditCardInput = ({ name, onSuccess, onError }) => {
         marginVertical: 30,
       }}
       onCardChange={(cardDetails) => {
-        console.log("cardDetails", cardDetails);
         onChange(cardDetails);
-      }}
-      onFocus={(focusedField) => {
-        console.log("focusField", focusedField);
       }}
     />
   );
