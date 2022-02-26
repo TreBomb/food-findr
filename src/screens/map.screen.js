@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
-import { useContext } from "react/cjs/react.development";
 import styled from "styled-components";
 import { ActivityIndicator } from "react-native-paper";
 
@@ -89,7 +88,7 @@ const RestaurantMap = ({ navigation }) => {
   );
 };
 
-export const MapScreen = () => {
+export const MapScreen = ({ navigation }) => {
   const { location } = useContext(LocationContext);
   if (!location) {
     return (
@@ -101,5 +100,5 @@ export const MapScreen = () => {
       />
     );
   }
-  return <RestaurantMap />;
+  return <RestaurantMap navigation={navigation} />;
 };
