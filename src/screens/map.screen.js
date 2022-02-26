@@ -54,7 +54,7 @@ const RestaurantMap = ({ navigation }) => {
         </LoadingContainer>
       )}
       <Map
-        // provider={PROVIDER_GOOGLE}
+        provider={PROVIDER_GOOGLE}
         region={{
           latitude: lat,
           longitude: lng,
