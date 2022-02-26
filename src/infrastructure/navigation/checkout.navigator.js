@@ -3,9 +3,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 const CheckoutStack = createStackNavigator();
 
-import { CheckoutScreen } from "../../screens/checkout/checkout.screen";
-import { CheckoutErrorScreen } from "../../screens/checkout/checkout-error.screen";
-import { CheckoutSuccessScreen } from "../../screens/checkout/checkout-success.screen";
+import { CheckoutScreen } from "../../screens/checkout.screen";
+import { CheckoutErrorScreen } from "../../screens/checkout-error.screen";
+import { CheckoutSuccessScreen } from "../../screens/checkout-success.screen";
 
 export const CheckoutNavigator = () => {
   return (
