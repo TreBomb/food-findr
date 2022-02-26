@@ -7,6 +7,7 @@ import { CartIconContainer, CartIcon } from "../styles/checkout.styles";
 
 export const CheckoutErrorScreen = ({ route }) => {
   const { error } = route.params;
+  console.log("error", error);
 
   return (
     <SafeArea>

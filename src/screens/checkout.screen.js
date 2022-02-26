@@ -5,7 +5,7 @@ import { List } from "react-native-paper";
 import { SafeArea } from "../components/safe-area.component";
 import { CreditCardInput } from "../components/credit-card.component";
 import { CartContext } from "../services/cart/cart.context";
-import { payRequest } from "../services/checkout/checkout.service";
+import { PayRequest } from "../services/checkout/checkout.service";
 
 import { Text } from "../components/text.component";
 import { Spacer } from "../components/spacer.component";
@@ -34,7 +34,7 @@ export const CheckoutScreen = ({ navigation }) => {
       });
       return;
     }
-    payRequest(card.id, sum, name)
+    PayRequest(card.id, sum, name)
       .then((result) => {
         setIsLoading(false);
         clearCart();
@@ -77,8 +77,8 @@ export const CheckoutScreen = ({ navigation }) => {
         <NameInput
           label="Name"
           value={name}
-          onChangeText={(t) => {
-            setName(t);
+          onChangeText={(txt) => {
+            setName(txt);
           }}
         />
         <Spacer position="top" size="large">

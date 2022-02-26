@@ -1,6 +1,6 @@
 // import React from "react";
 // import { LiteCreditCardInput } from "react-native-credit-card-input";
-// import { CardTokenRequest } from "../services/checkout/checkout.service";
+// import { cardTokenRequest } from "../services/checkout/checkout.service";
 
 // export const CreditCardInput = ({ name, onSuccess, onError }) => {
 //   const onChange = async (formData) => {
@@ -17,7 +17,7 @@
 
 //     if (!isIncomplete) {
 //       try {
-//         const info = await CardTokenRequest(card);
+//         const info = await cardTokenRequest(card);
 //         onSuccess(info);
 //       } catch (e) {
 //         onError();
@@ -29,10 +29,11 @@
 
 import React from "react";
 import { CardField } from "@stripe/stripe-react-native";
-import { CardTokenRequest } from "../services/checkout/checkout.service";
+import { cardTokenRequest } from "../services/checkout/checkout.service";
 
 export const CreditCardInput = ({ name, onSuccess, onError }) => {
   const onChange = async (formData) => {
+    console.log("formData", formData);
     const { complete, expiryMonth, expiryYear } = formData;
     // const isIncomplete = Object.values(status).includes("incomplete");
     const card = {
@@ -42,10 +43,12 @@ export const CreditCardInput = ({ name, onSuccess, onError }) => {
       cvc: "242",
       name: name,
     };
+    console.log("card", card);
 
     if (complete) {
+      console.log("complete");
       try {
-        const info = await CardTokenRequest(card);
+        const info = await cardTokenRequest(card);
         onSuccess(info);
       } catch (e) {
         onError();

@@ -39,7 +39,7 @@ export const ClearButton = styled(Button).attrs({
   padding: ${(props) => props.theme.space[2]};
 `;
 
-export const ChechoutStyles = styled(ActivityIndicator).attrs({
+export const PaymentProcessing = styled(ActivityIndicator).attrs({
   size: 128,
   animating: true,
   color: "tomato",
