@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import MapView from "react-native-maps";
 import styled from "styled-components";
 import { ActivityIndicator } from "react-native-paper";
 
@@ -53,7 +53,6 @@ const RestaurantMap = ({ navigation }) => {
         </LoadingContainer>
       )}
       <Map
-        // provider={PROVIDER_GOOGLE}
         region={{
           latitude: lat,
           longitude: lng,
