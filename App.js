@@ -1,4 +1,6 @@
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
+import { TouchableWithoutFeedback, Keyboard } from "react-native";
+
 import React from "react";
 import { ThemeProvider } from "styled-components/native";
 
@@ -11,6 +13,12 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import { theme } from "./src/infrastructure/theme";
 import { Navigation } from "./src/infrastructure/navigation/";
 import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
+
+const DismissKeyboard = ({ children }) => (
+  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    {children}
+  </TouchableWithoutFeedback>
+);
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -26,9 +34,11 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <AuthenticationContextProvider>
-          <Navigation />
-        </AuthenticationContextProvider>
+        <DismissKeyboard>
+          <AuthenticationContextProvider>
+            <Navigation />
+          </AuthenticationContextProvider>
+        </DismissKeyboard>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
