@@ -6,7 +6,7 @@ import { RestaurantInfoCard } from "../components/restaurant-info-card.component
 import { CartContext } from "../services/cart/cart.context";
 
 import { SafeArea } from "../components/safe-area.component";
-import { OrderButton } from "../styles/restaurant-list.styles";
+import { OrderButton, CartButton } from "../styles/restaurant-list.styles";
 import { Spacer } from "../components/spacer.component";
 
 export const RestaurantDetailScreen = ({ route, navigation }) => {
@@ -16,7 +16,7 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
   const [drinksExpanded, setDrinksExpanded] = useState(false);
 
   const { restaurant } = route.params;
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, cart, cartRestaurant } = useContext(CartContext);
 
   return (
     <SafeArea>
@@ -29,8 +29,33 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
           expanded={breakfastExpanded}
           onPress={() => setBreakfastExpanded(!breakfastExpanded)}
         >
-          <List.Item title="Eggs Benedict" />
-          <List.Item title="Classic Breakfast" />
+          <List.Item
+            title="Eggs Benedict"
+            right={(props) => (
+              <CartButton
+                onPress={() => {
+                  addToCart({ item: "Eggs Benedict", price: 899 }, restaurant);
+                }}
+              >
+                $8.99
+              </CartButton>
+            )}
+          />
+          <List.Item
+            title="Classic Breakfast"
+            right={(props) => (
+              <CartButton
+                onPress={() => {
+                  addToCart(
+                    { item: "Classic Breakfast", price: 899 },
+                    restaurant
+                  );
+                }}
+              >
+                $8.99
+              </CartButton>
+            )}
+          />
         </List.Accordion>
 
         <List.Accordion
@@ -40,9 +65,48 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
           expanded={lunchExpanded}
           onPress={() => setLunchExpanded(!lunchExpanded)}
         >
-          <List.Item title="Burger w/ Fries" />
-          <List.Item title="Steak Sandwich" />
-          <List.Item title="Mushroom Soup" />
+          <List.Item
+            title="Burger w/ Fries"
+            right={(props) => (
+              <CartButton
+                onPress={() => {
+                  addToCart(
+                    { item: "Burger w/ Fries", price: 1199 },
+                    restaurant
+                  );
+                }}
+              >
+                $11.99
+              </CartButton>
+            )}
+          />
+          <List.Item
+            title="Steak Sandwich"
+            right={(props) => (
+              <CartButton
+                onPress={() => {
+                  addToCart(
+                    { item: "Steak Sandwich", price: 1599 },
+                    restaurant
+                  );
+                }}
+              >
+                $15.99
+              </CartButton>
+            )}
+          />
+          <List.Item
+            title="Mushroom Soup"
+            right={(props) => (
+              <CartButton
+                onPress={() => {
+                  addToCart({ item: "Mushroom Soup", price: 999 }, restaurant);
+                }}
+              >
+                $9.99
+              </CartButton>
+            )}
+          />
         </List.Accordion>
 
         <List.Accordion
@@ -52,9 +116,51 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
           expanded={dinnerExpanded}
           onPress={() => setDinnerExpanded(!dinnerExpanded)}
         >
-          <List.Item title="Spaghetti Bolognese" />
-          <List.Item title="Veal Cutlet with Chicken Mushroom Rotini" />
-          <List.Item title="Steak Frites" />
+          <List.Item
+            title="Spaghetti Bolognese"
+            right={(props) => (
+              <CartButton
+                onPress={() => {
+                  addToCart(
+                    { item: "Spaghetti Bolognese", price: 1199 },
+                    restaurant
+                  );
+                }}
+              >
+                $11.99
+              </CartButton>
+            )}
+          />
+          <List.Item
+            title="Chicken Mushroom Rotini"
+            right={(props) => (
+              <CartButton
+                onPress={() => {
+                  addToCart(
+                    {
+                      item: "Chicken Mushroom Rotini",
+                      price: 1299,
+                    },
+                    restaurant
+                  );
+                }}
+              >
+                $12.99
+              </CartButton>
+            )}
+          />
+          <List.Item
+            title="Steak Frites"
+            right={(props) => (
+              <CartButton
+                onPress={() => {
+                  addToCart({ item: "Steak Frites", price: 1599 }, restaurant);
+                }}
+              >
+                $15.99
+              </CartButton>
+            )}
+          />
         </List.Accordion>
 
         <List.Accordion
@@ -64,24 +170,78 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
           expanded={drinksExpanded}
           onPress={() => setDrinksExpanded(!drinksExpanded)}
         >
-          <List.Item title="Coffee" />
-          <List.Item title="Tea" />
-          <List.Item title="Modelo" />
-          <List.Item title="Coke" />
-          <List.Item title="Fanta" />
+          <List.Item
+            title="Coffee"
+            right={(props) => (
+              <CartButton
+                onPress={() => {
+                  addToCart({ item: "Coffee", price: 499 }, restaurant);
+                }}
+              >
+                $3.99
+              </CartButton>
+            )}
+          />
+          <List.Item
+            title="Tea"
+            right={(props) => (
+              <CartButton
+                onPress={() => {
+                  addToCart({ item: "Tea", price: 499 }, restaurant);
+                }}
+              >
+                $4.99
+              </CartButton>
+            )}
+          />
+          <List.Item
+            title="Modelo"
+            right={(props) => (
+              <CartButton
+                onPress={() => {
+                  addToCart({ item: "Modelo", price: 799 }, restaurant);
+                }}
+              >
+                $7.99
+              </CartButton>
+            )}
+          />
+          <List.Item
+            title="Coke"
+            right={(props) => (
+              <CartButton
+                onPress={() => {
+                  addToCart({ item: "Coke", price: 399 }, restaurant);
+                }}
+              >
+                $3.99
+              </CartButton>
+            )}
+          />
+          <List.Item
+            title="Fanta"
+            right={(props) => (
+              <CartButton
+                onPress={() => {
+                  addToCart({ item: "Fanta", price: 399 }, restaurant);
+                }}
+              >
+                $3.99
+              </CartButton>
+            )}
+          />
         </List.Accordion>
       </ScrollView>
       <Spacer position="bottom" size="large">
-        <OrderButton
-          mode="contained"
-          icon="cash-usd"
-          onPress={() => {
-            addToCart({ item: "Special", price: 1299 }, restaurant);
-            navigation.navigate("Checkout");
-          }}
-        >
-          Order Special Only $12.99
-        </OrderButton>
+        {cart.length > 0 && cartRestaurant.name === restaurant.name && (
+          <OrderButton
+            onPress={() => {
+              navigation.navigate("Checkout");
+            }}
+          >
+            Continue To Checkout
+          </OrderButton>
+        )}
       </Spacer>
     </SafeArea>
   );

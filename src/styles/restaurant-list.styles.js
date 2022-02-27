@@ -11,8 +11,20 @@ export const RestaurantList = styled(FlatList).attrs({
 
 export const OrderButton = styled(Button).attrs({
   colors: colors.brand.primary,
+  mode: "contained",
+  icon: "cash-usd",
 })`
   padding: ${(props) => props.theme.space[2]};
+  margin-top: ${(props) => props.theme.space[2]};
   width: 80%;
+  align-self: center;
+`;
+
+export const CartButton = styled(Button).attrs({
+  colors: colors.brand.primary,
+  mode: "contained",
+})`
+  padding: 0;
+  width: 25%;
   align-self: center;
 `;

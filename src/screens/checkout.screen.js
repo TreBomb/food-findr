@@ -20,7 +20,7 @@ import {
 } from "../styles/checkout.styles";
 
 export const CheckoutScreen = ({ navigation }) => {
-  const { cart, restaurant, clearCart, sum } = useContext(CartContext);
+  const { cart, cartRestaurant, clearCart, sum } = useContext(CartContext);
   const [name, setName] = useState("");
   const [card, setCard] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -48,7 +48,7 @@ export const CheckoutScreen = ({ navigation }) => {
       });
   };
 
-  if (!cart.length || !restaurant) {
+  if (!cart.length || !cartRestaurant) {
     return (
       <SafeArea>
         <CartIconContainer>
@@ -60,7 +60,7 @@ export const CheckoutScreen = ({ navigation }) => {
   }
   return (
     <SafeArea>
-      <RestaurantInfoCard restaurant={restaurant} />
+      <RestaurantInfoCard restaurant={cartRestaurant} />
       {isLoading && <PaymentProcessing />}
       <ScrollView>
         <Spacer position="left" size="medium">
@@ -69,7 +69,9 @@ export const CheckoutScreen = ({ navigation }) => {
           </Spacer>
           <List.Section>
             {cart.map(({ item, price }) => {
-              return <List.Item title={`${item} - ${price / 100}`} />;
+              return (
+                <List.Item key={item} title={`${item} - ${price / 100}`} />
+              );
             })}
           </List.Section>
           <Text>Total: {sum / 100}</Text>

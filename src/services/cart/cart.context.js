@@ -72,7 +72,7 @@ export const CartContextProvider = ({ children }) => {
       value={{
         addToCart: add,
         clearCart: clear,
-        restaurant,
+        cartRestaurant: restaurant,
         cart,
         sum,
       }}
