@@ -26,6 +26,7 @@ export const LoginScreen = ({ navigation }) => {
       <Title>Food Findr</Title>
       <AccountContainer>
         <AuthInput
+          activeUnderlineColor="tomato"
           label="E-mail"
           value={email}
           textContentType="emailAddress"
@@ -35,6 +36,7 @@ export const LoginScreen = ({ navigation }) => {
         />
         <Spacer size="large">
           <AuthInput
+            activeUnderlineColor="tomato"
             label="Password"
             value={password}
             textContentType="password"

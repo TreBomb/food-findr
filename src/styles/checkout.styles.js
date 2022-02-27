@@ -5,7 +5,6 @@ import {
   Button,
   ActivityIndicator,
 } from "react-native-paper";
-import { colors } from "../infrastructure/theme/colors";
 
 export const CartIconContainer = styled.View`
   align-items: center;
@@ -24,7 +23,7 @@ export const NameInput = styled(TextInput)`
 `;
 
 export const PayButton = styled(Button).attrs({
-  color: colors.brand.primary,
+  color: "lightgreen",
 })`
   width: 80%;
   align-self: center;
@@ -32,7 +31,7 @@ export const PayButton = styled(Button).attrs({
 `;
 
 export const ClearButton = styled(Button).attrs({
-  color: colors.ui.error,
+  color: "tomato",
 })`
   width: 80%;
   align-self: center;

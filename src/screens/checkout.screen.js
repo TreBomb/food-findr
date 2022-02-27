@@ -68,15 +68,19 @@ export const CheckoutScreen = ({ navigation }) => {
             <Text>Your Order</Text>
           </Spacer>
           <List.Section>
-            {cart.map(({ item, price }) => {
+            {cart.map(({ item, price }, index) => {
               return (
-                <List.Item key={item} title={`${item} - ${price / 100}`} />
+                <List.Item
+                  key={`${item} ${index}`}
+                  title={`${item} - ${price / 100}`}
+                />
               );
             })}
           </List.Section>
           <Text>Total: {sum / 100}</Text>
         </Spacer>
         <NameInput
+          activeUnderlineColor="tomato"
           label="Name"
           value={name}
           onChangeText={(txt) => {

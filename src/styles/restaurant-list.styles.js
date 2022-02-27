@@ -1,7 +1,6 @@
 import styled from "styled-components/native";
 import { FlatList } from "react-native";
 import { Button } from "react-native-paper";
-import { colors } from "../infrastructure/theme/colors";
 
 export const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -10,10 +9,10 @@ export const RestaurantList = styled(FlatList).attrs({
 })``;
 
 export const OrderButton = styled(Button).attrs({
-  colors: colors.brand.primary,
   mode: "contained",
   icon: "cash-usd",
 })`
+  background-color: tomato;
   padding: ${(props) => props.theme.space[2]};
   margin-top: ${(props) => props.theme.space[2]};
   width: 80%;
@@ -21,9 +20,9 @@ export const OrderButton = styled(Button).attrs({
 `;
 
 export const CartButton = styled(Button).attrs({
-  colors: colors.brand.primary,
   mode: "contained",
 })`
+  background-color: tomato;
   padding: 0;
   width: 25%;
   align-self: center;

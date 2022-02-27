@@ -27,6 +27,7 @@ export const RegisterScreen = ({ navigation }) => {
       <Title>Food Findr</Title>
       <AccountContainer>
         <AuthInput
+          activeUnderlineColor="tomato"
           label="E-mail"
           value={email}
           textContentType="emailAddress"
@@ -36,6 +37,7 @@ export const RegisterScreen = ({ navigation }) => {
         />
         <Spacer size="large">
           <AuthInput
+            activeUnderlineColor="tomato"
             label="Password"
             value={password}
             textContentType="password"
@@ -46,6 +48,7 @@ export const RegisterScreen = ({ navigation }) => {
         </Spacer>
         <Spacer size="large">
           <AuthInput
+            activeUnderlineColor="tomato"
             label="Repeat Password"
             value={repeatedPassword}
             textContentType="password"
