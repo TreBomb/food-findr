@@ -1,4 +1,5 @@
 import React from "react";
+import { Keyboard } from "react-native";
 import { LiteCreditCardInput } from "react-native-credit-card-input";
 import { cardTokenRequest } from "../services/checkout/checkout.service";
 
@@ -16,8 +17,10 @@ export const CreditCardInput = ({ name, onSuccess, onError }) => {
     };
     if (!isIncomplete) {
       try {
+        Keyboard.dismiss();
         const info = await cardTokenRequest(card);
         onSuccess(info);
+        Keyboard.dismiss();
       } catch (e) {
         onError();
       }
