@@ -3,7 +3,6 @@ import LottieView from "lottie-react-native";
 
 import { SafeArea } from "../components/safe-area.component";
 import { Text } from "../components/text.component";
-import { colors } from "../infrastructure/theme/colors";
 import { CartIconContainer, AnimationWrapper } from "../styles/checkout.styles";
 
 export const CheckoutErrorScreen = ({ route }) => {

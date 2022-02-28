@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { ScrollView } from "react-native";
+import { ScrollView, KeyboardAvoidingView } from "react-native";
 import { List, Divider } from "react-native-paper";
 
 import { SafeArea } from "../components/safe-area.component";
@@ -62,67 +62,69 @@ export const CheckoutScreen = ({ navigation }) => {
     <SafeArea>
       <RestaurantInfoCard restaurant={cartRestaurant} />
       {isLoading && <PaymentProcessing />}
-      <ScrollView>
-        <Spacer position="left" size="medium">
-          <Spacer position="top" size="large">
-            <Text>Your Order</Text>
+      <KeyboardAvoidingView behavior="padding">
+        <ScrollView>
+          <Spacer position="left" size="medium">
+            <Spacer position="top" size="large">
+              <Text>Your Order</Text>
+            </Spacer>
+            <List.Section>
+              {cart.map(({ item, price }, index) => {
+                return (
+                  <List.Item
+                    key={`${item} ${index}`}
+                    title={`${item} - ${price / 100}`}
+                  />
+                );
+              })}
+            </List.Section>
+            <Text>Total: {sum / 100}</Text>
           </Spacer>
-          <List.Section>
-            {cart.map(({ item, price }, index) => {
-              return (
-                <List.Item
-                  key={`${item} ${index}`}
-                  title={`${item} - ${price / 100}`}
-                />
-              );
-            })}
-          </List.Section>
-          <Text>Total: {sum / 100}</Text>
-        </Spacer>
-        <Spacer position="top" size="large" />
-        <Divider />
-        <NameInput
-          activeUnderlineColor="tomato"
-          label="Name"
-          value={name}
-          onChangeText={(txt) => {
-            setName(txt);
-          }}
-        />
-        <Spacer position="top" size="large">
-          {name.length > 0 && (
-            <CreditCardInput
-              name={name}
-              onSuccess={setCard}
-              onError={() =>
-                navigation.navigate("Checkout Error", {
-                  error: "Something went wrong processing your credit card",
-                })
-              }
-            />
-          )}
-        </Spacer>
-        <Spacer position="top" size="xxl" />
+          <Spacer position="top" size="large" />
+          <Divider />
+          <NameInput
+            activeUnderlineColor="tomato"
+            label="Name"
+            value={name}
+            onChangeText={(txt) => {
+              setName(txt);
+            }}
+          />
+          <Spacer position="top" size="large">
+            {name.length > 0 && (
+              <CreditCardInput
+                name={name}
+                onSuccess={setCard}
+                onError={() =>
+                  navigation.navigate("Checkout Error", {
+                    error: "Something went wrong processing your credit card",
+                  })
+                }
+              />
+            )}
+          </Spacer>
+          <Spacer position="top" size="xxl" />
 
-        <PayButton
-          disabled={isLoading}
-          icon="cash-usd"
-          mode="contained"
-          onPress={onPay}
-        >
-          Pay
-        </PayButton>
-        <Spacer position="top" size="large">
-          <ClearButton
+          <PayButton
             disabled={isLoading}
-            icon="cart-off"
+            icon="cash-usd"
             mode="contained"
-            onPress={clearCart}
+            onPress={onPay}
           >
-            Clear Cart
-          </ClearButton>
-        </Spacer>
-      </ScrollView>
+            Pay
+          </PayButton>
+          <Spacer position="top" size="large">
+            <ClearButton
+              disabled={isLoading}
+              icon="cart-off"
+              mode="contained"
+              onPress={clearCart}
+            >
+              Clear Cart
+            </ClearButton>
+          </Spacer>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </SafeArea>
   );
 };
