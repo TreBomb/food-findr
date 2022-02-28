@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LottieView from "lottie-react-native";
 
 import { SafeArea } from "../components/safe-area.component";
@@ -9,6 +9,14 @@ export const CheckoutErrorScreen = ({ route }) => {
   const { error } = route.params;
   console.log("error", error);
 
+  const [lottie, setLottie] = useState("");
+
+  useEffect(() => {
+    fetch("https://assets3.lottiefiles.com/packages/lf20_qpwbiyxf.json")
+      .then((resp) => resp.json())
+      .then((data) => setLottie(data));
+  }, []);
+
   return (
     <SafeArea>
       <CartIconContainer>
@@ -18,7 +26,7 @@ export const CheckoutErrorScreen = ({ route }) => {
             autoPlay
             loop={false}
             resizeMode="contain"
-            source={require("../../assets/fail.json")}
+            source={lottie}
           />
         </AnimationWrapper>
         <Text variant="lg">{error}</Text>
