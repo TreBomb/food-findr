@@ -11,6 +11,7 @@ const FavoritesWrapper = styled(Card)`
   z-index: 999;
   border-radius: 8px;
   width: 95%;
+  align-self: center;
 `;
 
 export const FavoritesBar = ({ favorites, onNavigate }) => {
@@ -18,7 +19,7 @@ export const FavoritesBar = ({ favorites, onNavigate }) => {
     return null;
   }
   return (
-    <FavoritesWrapper elevation={3}>
+    <FavoritesWrapper elevation={4}>
       <Spacer variant="left.large">
         <Text variant="caption">Favorites</Text>
       </Spacer>

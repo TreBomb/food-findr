@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { ScrollView } from "react-native";
-import { List } from "react-native-paper";
+import { List, Divider } from "react-native-paper";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { CartContext } from "../services/cart/cart.context";
@@ -23,7 +23,7 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
       <RestaurantInfoCard restaurant={restaurant} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <List.Accordion
-          theme={{ colors: { primary: "tomato" } }}
+          theme={{ colors: { primary: "tomato", background: "#FFF" } }}
           title="Breakfast"
           left={(props) => <List.Icon {...props} icon="bread-slice" />}
           expanded={breakfastExpanded}
@@ -41,6 +41,7 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
               </CartButton>
             )}
           />
+          <Divider />
           <List.Item
             title="Classic Breakfast"
             right={(props) => (
@@ -56,10 +57,11 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
               </CartButton>
             )}
           />
+          <Divider />
         </List.Accordion>
 
         <List.Accordion
-          theme={{ colors: { primary: "tomato" } }}
+          theme={{ colors: { primary: "tomato", background: "#FFF" } }}
           title="Lunch"
           left={(props) => <List.Icon {...props} icon="hamburger" />}
           expanded={lunchExpanded}
@@ -80,6 +82,7 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
               </CartButton>
             )}
           />
+          <Divider />
           <List.Item
             title="Steak Sandwich"
             right={(props) => (
@@ -95,6 +98,7 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
               </CartButton>
             )}
           />
+          <Divider />
           <List.Item
             title="Mushroom Soup"
             right={(props) => (
@@ -107,10 +111,11 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
               </CartButton>
             )}
           />
+          <Divider />
         </List.Accordion>
 
         <List.Accordion
-          theme={{ colors: { primary: "tomato" } }}
+          theme={{ colors: { primary: "tomato", background: "#FFF" } }}
           title="Dinner"
           left={(props) => <List.Icon {...props} icon="food-variant" />}
           expanded={dinnerExpanded}
@@ -131,6 +136,7 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
               </CartButton>
             )}
           />
+          <Divider />
           <List.Item
             title="Chicken Mushroom Rotini"
             right={(props) => (
@@ -149,6 +155,7 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
               </CartButton>
             )}
           />
+          <Divider />
           <List.Item
             title="Steak Frites"
             right={(props) => (
@@ -161,10 +168,11 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
               </CartButton>
             )}
           />
+          <Divider />
         </List.Accordion>
 
         <List.Accordion
-          theme={{ colors: { primary: "tomato" } }}
+          theme={{ colors: { primary: "tomato", background: "#FFF" } }}
           title="Drinks"
           left={(props) => <List.Icon {...props} icon="cup" />}
           expanded={drinksExpanded}
@@ -182,6 +190,7 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
               </CartButton>
             )}
           />
+          <Divider />
           <List.Item
             title="Tea"
             right={(props) => (
@@ -194,6 +203,7 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
               </CartButton>
             )}
           />
+          <Divider />
           <List.Item
             title="Modelo"
             right={(props) => (
@@ -206,6 +216,7 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
               </CartButton>
             )}
           />
+          <Divider />
           <List.Item
             title="Coke"
             right={(props) => (
@@ -218,6 +229,7 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
               </CartButton>
             )}
           />
+          <Divider />
           <List.Item
             title="Fanta"
             right={(props) => (
@@ -230,6 +242,7 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
               </CartButton>
             )}
           />
+          <Divider />
         </List.Accordion>
       </ScrollView>
       <Spacer position="bottom" size="large">
