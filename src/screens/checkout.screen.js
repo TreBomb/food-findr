@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { ScrollView, KeyboardAvoidingView } from "react-native";
+import { ScrollView } from "react-native";
 import { List, Divider } from "react-native-paper";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
