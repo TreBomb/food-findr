@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { ScrollView, KeyboardAvoidingView } from "react-native";
 import { List, Divider } from "react-native-paper";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 import { SafeArea } from "../components/safe-area.component";
 import { CreditCardInput } from "../components/credit-card.component";
@@ -62,8 +63,8 @@ export const CheckoutScreen = ({ navigation }) => {
     <SafeArea>
       <RestaurantInfoCard restaurant={cartRestaurant} />
       {isLoading && <PaymentProcessing />}
-      <KeyboardAvoidingView behavior="padding">
-        <ScrollView>
+      <ScrollView keyboardDismissMode="on-drag">
+        <KeyboardAwareScrollView>
           <Spacer position="left" size="medium">
             <Spacer position="top" size="large">
               <Text>Your Order</Text>
@@ -123,8 +124,8 @@ export const CheckoutScreen = ({ navigation }) => {
               Clear Cart
             </ClearButton>
           </Spacer>
-        </ScrollView>
-      </KeyboardAvoidingView>
+        </KeyboardAwareScrollView>
+      </ScrollView>
     </SafeArea>
   );
 };
